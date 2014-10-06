@@ -1,6 +1,8 @@
-== FitHorde
+# FitHorde
 
 [Trello page](https://trello.com/b/T6fRYGNk/fithorde-ga-project-2-khaled-and-michael)
+
+[Notes in wiki](https://github.com/hyloguy/FitHorde/wiki)
 
 Here is the schema diagram:
 
