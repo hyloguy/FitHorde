@@ -1,5 +1,12 @@
 == FitHorde
 
+[Trello page](https://trello.com/b/T6fRYGNk/fithorde-ga-project-2-khaled-and-michael)
+
+Here is the schema diagram:
+
+![schema diagram](devstuff/schema.png)
+
+
 This README will document whatever steps are necessary to get the
 application up and running.
 
