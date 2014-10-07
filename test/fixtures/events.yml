@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  lat: 9.99
+  lng: 9.99
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  starting: 2014-10-07 11:01:55
+  duration: 2014-10-07 11:01:55
+  capacity: 1
+  description: MyText
+  user_id: 
+
+two:
+  title: MyString
+  lat: 9.99
+  lng: 9.99
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  starting: 2014-10-07 11:01:55
+  duration: 2014-10-07 11:01:55
+  capacity: 1
+  description: MyText
+  user_id: 
