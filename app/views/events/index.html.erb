@@ -1,41 +1,36 @@
 
 <p id="notice"><%= notice %></p>
-<h2>Click <%= link_to "here", new_event_path %> to create a new EVENT</h2>
 
-<table>
-	<thead>
-		<tr>
-			<th>title</th>
-			<th>description</th>
-			<th>street</th>
-			<th>city</th>
-			<th>state</th>
-			<th>zip</th>
-			<th>starting</th>
-			<th>duration</th>
-			<th>capacity</th>
-			<th>organizer</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @events.each do |event| %>
-		<tr>
-			<td><%= link_to event.title, event %></td>
-			<td><%= event.description %></td>
-			<td><%= event.street %></td>
-			<td><%= event.city %></td>
-			<td><%= event.state %></td>
-			<td><%= event.zip %></td>
-			<td><%= event.starting %></td>
-			<td><%= event.duration %></td>
-			<td><%= event.capacity %></td>
-			<td><%= event.user.nil? ? "" : event.user.firstname %></td>
-			<td><%= link_to "edit", edit_event_path(event) %></td>
-			<td><%= link_to "delete", event, method: :delete %></td>
-		</tr>
-		<% end %>
-	</tbody>
+<div id="map-canvas"></div>
+<div class="container-fluid col-md-12" id="main">
+	<div class="row">
+		<div class="col-sm-9"><!-- Map goes here! --></div>
+		<div class="col-sm-3">
+			<ul>
+				<% @events.each do |event| %>
+					<li>
+						<%= link_to event.title, event %>&nbsp;
+						<%= link_to "E", edit_event_path(event),
+										:class => 'btn btn-default btn-xs' %>&nbsp;
+						<%= link_to "D", event, method: :delete,
+		                data: { confirm: 'Are you sure?' },
+		                :class => 'btn btn-danger btn-xs'  %>
+					</li>
+				<% end %>
+				<li>padding</li>
+				<li>padding</li>
+				<li>padding</li>
+				<li>padding</li>
+				<li>padding</li>
+				<li>padding</li>
+				<li>padding</li>
+				<li>padding</li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-
-</table>
-
+<div class="container-fluid">
+	<%= link_to "Create new event", new_event_path,
+			:class => 'btn btn-primary btn-sm' %>
+</div>
