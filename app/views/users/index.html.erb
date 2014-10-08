@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h2>Click <%= link_to "here", new_user_path %> to create a new user</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>username</th>
+			<th>first name</th>
+			<th>last name</th>
+			<th>city</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.username %></td>
+			<td><%= user.firstname %></td>
+			<td><%= user.lastname %></td>
+			<td><%= user.city %></td>
+			<td><%= link_to "edit", edit_user_path(user) %></td>
+			<td><%= link_to "delete", user, method: :delete %></td>
+		</tr>
+		<% end %>
+	</tbody>
+
+
+</table>
