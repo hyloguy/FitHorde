@@ -29,8 +29,7 @@
 			<td><%= event.starting %></td>
 			<td><%= event.duration %></td>
 			<td><%= event.capacity %></td>
-			<td><%= event.user.firstname %></td>
-			
+			<td><%= event.user.nil? ? "" : event.user.firstname %></td>
 			<td><%= link_to "edit", edit_event_path(event) %></td>
 			<td><%= link_to "delete", event, method: :delete %></td>
 		</tr>
