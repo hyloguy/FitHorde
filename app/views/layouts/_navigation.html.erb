@@ -1,0 +1,63 @@
+<!-- app/views/shared/_navigation.html.erb -->
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <a class="navbar-brand" href="#">InterstellaReddit</a> -->
+      <%= link_to 'FitHorde', root_path, :class => "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if @_current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= @_current_user.handle %> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">My Profile</a></li>
+              <li><a href="#">Administer Site</a></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Logout', logins_path %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <button type="button" class="btn btn-default navbar-btn"
+             data-toggle="modal" data-target="#login-form">
+              Login
+            </button>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="login-form" tabindex="-1" role="dialog" aria-labelledby="login-form-label" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-header">
+        <h4 class="modal-title" id="login-form-label">
+          Sign in to FitHorde!
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>(form goes here)</p>
+      </div>
+      <div class="modal-footer">
+        <div class="actions form-group">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+  </div>
+</div>
