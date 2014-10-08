@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<p>title: <%= @event.title %></p>
+<p>description: <%= @event.description %></p>
+<p>street: <%= @event.street %></p>
+<p>city: <%= @event.city %></p>
+<p>state: <%= @event.state %></p>
+<p>starting: <%= @event.starting %></p>
+<p>duration: <%= @event.duration %></p>
+<p>capacity: <%= @event.capacity %></p>
+<p>organizer: <%= @event.user.firstname %></p>
+
+<%= form_for(@booking) do |f| %>
+	<%= f.label "user to book" %>
+	<%= f.select :user_id, 
+								User.all.collect {|user| [user.username, user.id]},
+								{prompt: "choose user"} %>
+	<%= f.hidden_field :event_id, value: @event.id %>
+	<%= f.submit "book for this event" %>
+<% end %>
+
+<%= link_to "return to event list", events_path %>
