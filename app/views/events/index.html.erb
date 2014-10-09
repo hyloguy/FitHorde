@@ -46,22 +46,26 @@
 
 <% @events.each do |event| %>
 	<div id="popover-content-event-<%= event.id %>" class="hide">
-		<p>title: <%= event.title %></p>
-		<p>description: <%= event.description %></p>
-		<p>street: <%= event.street %></p>
-		<p>city: <%= event.city %></p>
-		<p>state: <%= event.state %></p>
-		<p>starting: <%= event.starting %></p>
-		<p>duration: <%= event.duration %></p>
-		<p>capacity: <%= event.capacity %></p>
-		<p>organizer: <%= event.user.firstname %></p>
-		<p><%= link_to "Edit", edit_event_path(event),
-										:class => 'btn btn-default btn-xs' %>
-		</p>
-		<p>
-			<%= link_to "Delete", event, method: :delete,
-		                data: { confirm: 'Are you sure?' },
-		                :class => 'btn btn-danger btn-xs'  %>
-		</p>
+		<table class="table table-striped">
+			<tr><td>title</td><td><%= event.title %></td></tr>
+			<tr><td>description</td><td><%= event.description %></td></tr>
+			<tr><td>street</td><td><%= event.street %></td></tr>
+			<tr><td>city</td><td><%= event.city %></td></tr>
+			<tr><td>state</td><td><%= event.state %></td></tr>
+			<tr><td>latitude</td><td><%= event.lat %></td></tr>
+			<tr><td>longitude</td><td><%= event.lng %></td></tr>
+			<tr><td>starting</td><td><%= event.starting %></td></tr>
+			<tr><td>duration</td><td><%= event.duration %></td></tr>
+			<tr><td>capacity</td><td><%= event.capacity %></td></tr>
+			<tr><td>organizer</td><td><%= event.user.firstname %></td></tr>
+			<tr><td></td><td><%= link_to "Edit this event", edit_event_path(event),
+											:class => 'btn btn-default btn-xs' %>
+			</td></tr>
+			<tr><td></td><td>
+				<%= link_to "Delete this event", event, method: :delete,
+			                data: { confirm: 'Are you sure?' },
+			                :class => 'btn btn-danger btn-xs'  %>
+			</td></tr>
+		</table>
 	</div>
 <% end %>
