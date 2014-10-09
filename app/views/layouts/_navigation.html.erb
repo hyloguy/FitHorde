@@ -16,6 +16,14 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <button type="button" class="btn btn-default navbar-btn"
+           data-toggle="modal" data-target="#new-event-form">
+            Create New Event
+          </button>
+        </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if @_current_user %>
           <li class="dropdown">
@@ -56,3 +64,33 @@
   </form>
 </div>
 
+<!-- Modal: New Event Form -->
+<div class="modal fade" id="new-event-form" tabindex="-1" role="dialog" aria-labelledby="new-event-form-label" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <%= form_tag "http://google.com", {role: 'form', :class => "modal-content"} do %>
+      <div class="modal-header">
+        <h4 class="modal-title" id="new-event-form-label">
+          Create New Event
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="field form-group">
+            <%= label_tag :a_field, nil, :class => 'control-label' %>
+            <%= text_field_tag :a_field, nil, :class => 'form-control' %>
+        </div>
+        <div class="field form-group">
+            <%= label_tag :b_field, nil, :class => 'control-label' %>
+            <%= text_field_tag :b_field, nil, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="actions form-group">
+            <%= submit_tag nil, :class => "btn btn-primary" %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
