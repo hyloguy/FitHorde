@@ -6,26 +6,31 @@
 	<div class="row">
 		<div class="col-sm-9"><!-- Map goes here! --></div>
 		<div class="col-sm-3">
-			<ul>
+			<div class="list-group">
 				<% @events.each do |event| %>
-					<li>
-						<%= link_to event.title, event %>&nbsp;
-						<%= link_to "E", edit_event_path(event),
-										:class => 'btn btn-default btn-xs' %>&nbsp;
-						<%= link_to "D", event, method: :delete,
-		                data: { confirm: 'Are you sure?' },
-		                :class => 'btn btn-danger btn-xs'  %>
-					</li>
+					<a href="#" id="<%= event.id %>" type="button"
+						class="list-group-item"
+						data-toggle="popover"
+						data-html="true"
+						data-container="body"
+						data-placement="left"
+						data-title="Event"
+						data-eventid="<%= event.id %>">
+						<%= event.title %>
+					</a>
 				<% end %>
-				<li>padding</li>
-				<li>padding</li>
-				<li>padding</li>
-				<li>padding</li>
-				<li>padding</li>
-				<li>padding</li>
-				<li>padding</li>
-				<li>padding</li>
-			</ul>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+				<a href="#" class="list-group-item">Some Event</a>
+			</div>
 		</div>
 	</div>
 </div>
@@ -34,3 +39,25 @@
 	<%= link_to "Create new event", new_event_path,
 			:class => 'btn btn-primary btn-sm' %>
 </div>
+
+<% @events.each do |event| %>
+	<div id="popover-content-event-<%= event.id %>" class="hide">
+		<p>title: <%= event.title %></p>
+		<p>description: <%= event.description %></p>
+		<p>street: <%= event.street %></p>
+		<p>city: <%= event.city %></p>
+		<p>state: <%= event.state %></p>
+		<p>starting: <%= event.starting %></p>
+		<p>duration: <%= event.duration %></p>
+		<p>capacity: <%= event.capacity %></p>
+		<p>organizer: <%= event.user.firstname %></p>
+		<p><%= link_to "E", edit_event_path(event),
+										:class => 'btn btn-default btn-xs' %>
+		</p>
+		<p>
+			<%= link_to "D", event, method: :delete,
+		                data: { confirm: 'Are you sure?' },
+		                :class => 'btn btn-danger btn-xs'  %>
+		</p>
+	</div>
+<% end %>

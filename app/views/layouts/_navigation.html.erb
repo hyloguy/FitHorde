@@ -33,7 +33,9 @@
         <% else %>
           <li>
             <button type="button" class="btn btn-default navbar-btn"
-             data-toggle="modal" data-target="#login-form">
+             data-toggle="popover" data-placement="left"
+             data-title="Login" data-container="body"
+             data-html="true" href="#" id="login">
               Login
             </button>
           </li>
@@ -43,21 +45,14 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<!-- Modal -->
-<div class="modal fade" id="login-form" tabindex="-1" role="dialog" aria-labelledby="login-form-label" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-header">
-        <h4 class="modal-title" id="login-form-label">
-          Sign in to FitHorde!
-        </h4>
-      </div>
-      <div class="modal-body">
-        <p>(form goes here)</p>
-      </div>
-      <div class="modal-footer">
-        <div class="actions form-group">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-  </div>
+<!-- Popover: Login Form -->
+<div id="popover-content" class="hide">
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <input type="text" placeholder="username" class="form-control" maxlength="15">
+      <input type="password" placeholder="password" class="form-control" maxlength="15">
+      <button type="submit" class="btn btn-primary">Login »</button>
+    </div>
+  </form>
 </div>
+
