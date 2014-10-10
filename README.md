@@ -1,5 +1,8 @@
 # FitHorde
 
+[See this app running on Heroku.](http://boiling-sands-5091.herokuapp.com/)
+It now appears to run identically on Heroku as it does locally. Sadly, that isn't saying much...
+
 [Trello page](https://trello.com/b/T6fRYGNk/fithorde-ga-project-2-khaled-and-michael)
 
 [Notes in wiki](https://github.com/hyloguy/FitHorde/wiki)
@@ -8,11 +11,15 @@ Here is the schema diagram:
 
 ![schema diagram](devstuff/schema.png)
 
+Issues:
 
-This README will document whatever steps are necessary to get the
-application up and running.
+* Whenever you load a page, you have to reload it for all the Javascript to work.
 
-Things you may want to cover:
+* The above only works in Chrome. In Safari, even if you do reload the page, the Javascript still doesn't work.
+
+
+
+Requirements:
 
 * Ruby version: 2.1.2
 
