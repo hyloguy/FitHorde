@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 <p>title: <%= @event.title %></p>
-<p>description: <%= @event.description %></p>
-<p>street: <%= @event.street %></p>
-<p>city: <%= @event.city %></p>
-<p>state: <%= @event.state %></p>
+<p>address:<br /><%= @event.street %><br />
+<%= @event.city %>, <%= @event.state %>, <%= @event.zip %></p>
+<p>Latitude: <%= @event.lat %>, Longitude: <%= @event.lng %></p>
 <p>starting: <%= @event.starting %></p>
 <p>duration: <%= @event.duration %></p>
 <p>capacity: <%= @event.capacity %></p>
 <p>organizer: <%= @event.user.firstname %></p>
+<p>description: <%= @event.description %></p>
 
 <%= form_for(@booking) do |f| %>
 	<%= f.label "user to book" %>

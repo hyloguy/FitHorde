@@ -1,0 +1,96 @@
+<!-- app/views/shared/_navigation.html.erb -->
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <a class="navbar-brand" href="#">InterstellaReddit</a> -->
+      <%= link_to 'FitHorde', root_path, :class => "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <button type="button" class="btn btn-default navbar-btn"
+           data-toggle="modal" data-target="#new-event-form">
+            Create New Event
+          </button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if @_current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= @_current_user.handle %> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">My Profile</a></li>
+              <li><a href="#">Administer Site</a></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Logout', logins_path %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <button type="button" class="btn btn-default navbar-btn"
+             data-toggle="popover" data-placement="left"
+             data-title="Login" data-container="body"
+             data-html="true" href="#" id="login">
+              Login
+            </button>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- Popover: Login Form -->
+<div id="popover-content" class="hide">
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <input type="text" placeholder="username" class="form-control" maxlength="15">
+      <input type="password" placeholder="password" class="form-control" maxlength="15">
+      <button type="submit" class="btn btn-primary">Login »</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal: New Event Form -->
+<div class="modal fade" id="new-event-form" tabindex="-1" role="dialog" aria-labelledby="new-event-form-label" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <%= form_tag "http://google.com", {role: 'form', :class => "modal-content"} do %>
+      <div class="modal-header">
+        <h4 class="modal-title" id="new-event-form-label">
+          Create New Event
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="field form-group">
+            <%= label_tag :a_field, nil, :class => 'control-label' %>
+            <%= text_field_tag :a_field, nil, :class => 'form-control' %>
+        </div>
+        <div class="field form-group">
+            <%= label_tag :b_field, nil, :class => 'control-label' %>
+            <%= text_field_tag :b_field, nil, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="actions form-group">
+            <%= submit_tag nil, :class => "btn btn-primary" %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

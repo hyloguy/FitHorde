@@ -2,7 +2,11 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :users, through: :bookings
   validate :check_location
-  validates :title, :starting, :duration, :capacity, presence: true
+  validates :title, :starting, presence: true
+  validates :duration, :capacity, numericality: {
+    only_integer: true,
+    greater_than: 0
+  }
 
   def check_location
   	if lat.blank? || lng.blank?

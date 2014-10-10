@@ -1,4 +1,4 @@
-<%= form_for(@event) do |f| %>
+<%= form_for(@event, html: {role: 'form', :class => "container"}) do |f| %>
 	<% if @event.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@event.errors.count, "error") %> prohibited
@@ -10,34 +10,87 @@
     </ul>
   </div>
   <% end %>
-	<%= f.label :title %>
-	<%= f.text_field :title %><br />
-	<%= f.label :lat %>
-	<%= f.text_field :lat %><br />
-	<%= f.label :lng %>
-	<%= f.text_field :lng %><br />
-	<%= f.label :street %>
-	<%= f.text_field :street %><br />
-	<%= f.label :city %>
-	<%= f.text_field :city %><br />
-	<%= f.label :state %>
-	<%= f.text_field :state %><br />
-	<%= f.label :zip %>
-	<%= f.text_field :zip %><br />
-	<%= f.label :starting %>
-	<%= f.text_field :starting %><br />
-	<%= f.label :duration %>
-	<%= f.text_field :duration %><br />
-	<%= f.label :capacity %>
-	<%= f.text_field :capacity %><br />
-	<%= f.label :description %>
-	<%= f.text_area :description %><br />
-	<%= f.label "Organizer" %>
-	<%= f.select :user_id, 
-								User.all.collect {|user| [user.username, user.id]},
-								{prompt: "choose organizer"}
-	 %><br />
-	
-	<%= f.submit %>
+
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label "Event name", :class => 'control-label' %>
+			<%= f.text_field :title, :class => 'col-md-16 form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label :lat, :class => 'control-label' %>
+			<%= f.text_field :lat, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label :lng, :class => 'control-label' %>
+			<%= f.text_field :lng, :class => 'orm-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label "Street address", :class => 'control-label' %>
+			<%= f.text_field :street, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label :city, :class => 'control-label' %>
+			<%= f.text_field :city, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label :state, :class => 'control-label' %>
+			<%= f.text_field :state, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label :zip, :class => 'control-label' %>
+			<%= f.text_field :zip, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label "When is the event?", :class => 'control-label' %>
+			<%= f.datetime_field :starting, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label "How long is the event in minutes?", :class => 'control-label' %>
+			<%= f.number_field :duration, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label "How many people can join?", :class => 'control-label' %>
+			<%= f.number_field :capacity, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label "(Optional) Please provide a full description of this event:", :class => 'control-label' %>
+			<%= f.text_area :description, :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.label "Organizer", :class => 'control-label' %>
+			<%= f.select :user_id, 
+										User.all.collect {|user| [user.username, user.id]},
+										{prompt: "choose organizer"},
+		                 {:class => "form-control"}
+			 %>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-xs-12">
+			<%= f.submit nil, :class => "btn btn-primary" %>
+		</div>
+	</div>
 <% end %>
 

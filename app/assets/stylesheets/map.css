@@ -1,0 +1,38 @@
+/*
+A custom Bootstrap 3.1 theme from http://bootply.com\
+
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+
+license: MIT
+author: bootply.com
+*/
+
+
+/*html,body{
+  	height:100%;
+}
+
+#main, #main>.row {
+	height:60%;
+}
+
+#main>.row {
+    overflow-y:scroll;
+}
+
+#right {
+	height:100%;
+}*/
+
+#map-canvas {
+	width:75%;
+/*    height:calc(100% - 0);
+*/
+    height: 600px;
+    position:absolute;
+    left:16px;
+    top:70px;
+    bottom:0;
+    overflow:hidden;
+}

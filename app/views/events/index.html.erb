@@ -1,41 +1,60 @@
 
 <p id="notice"><%= notice %></p>
-<h2>Click <%= link_to "here", new_event_path %> to create a new EVENT</h2>
 
-<table>
-	<thead>
-		<tr>
-			<th>title</th>
-			<th>description</th>
-			<th>street</th>
-			<th>city</th>
-			<th>state</th>
-			<th>zip</th>
-			<th>starting</th>
-			<th>duration</th>
-			<th>capacity</th>
-			<th>organizer</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @events.each do |event| %>
-		<tr>
-			<td><%= link_to event.title, event %></td>
-			<td><%= event.description %></td>
-			<td><%= event.street %></td>
-			<td><%= event.city %></td>
-			<td><%= event.state %></td>
-			<td><%= event.zip %></td>
-			<td><%= event.starting %></td>
-			<td><%= event.duration %></td>
-			<td><%= event.capacity %></td>
-			<td><%= event.user.nil? ? "" : event.user.firstname %></td>
-			<td><%= link_to "edit", edit_event_path(event) %></td>
-			<td><%= link_to "delete", event, method: :delete %></td>
-		</tr>
-		<% end %>
-	</tbody>
+<div id="map-canvas"></div>
+<div class="container-fluid col-md-12" id="main">
+	<div class="row">
+		<div class="col-sm-9"><!-- Map goes here! --></div>
+		<div class="col-sm-3">
+			<div class="list-group">
+				<% @events.each do |event| %>
+					<a href="#" id="<%= event.id %>" type="button"
+						class="list-group-item"
+						data-toggle="popover"
+						data-html="true"
+						data-container="body"
+						data-placement="left"
+						data-title="Event"
+						data-eventid="<%= event.id %>">
+						<%= event.title %>
+					</a>
+				<% end %>
+				<%= link_to "Create new event", new_event_path,
+						:class => 'list-group-item' %>
+			</div>
+		</div>
+	</div>
+</div>
 
+<!-- Remove this below -->
+<div class="container-fluid">
+	<%= link_to "Create new event", new_event_path,
+			:class => 'btn btn-primary btn-sm' %>
+</div>
+<!-- Remove this above -->
 
-</table>
-
+<% @events.each do |event| %>
+	<div id="popover-content-event-<%= event.id %>" class="hide">
+		<table class="table table-striped">
+			<tr><td>title</td><td><%= event.title %></td></tr>
+			<tr><td>description</td><td><%= event.description %></td></tr>
+			<tr><td>street</td><td><%= event.street %></td></tr>
+			<tr><td>city</td><td><%= event.city %></td></tr>
+			<tr><td>state</td><td><%= event.state %></td></tr>
+			<tr><td>latitude</td><td><%= event.lat %></td></tr>
+			<tr><td>longitude</td><td><%= event.lng %></td></tr>
+			<tr><td>starting</td><td><%= event.starting %></td></tr>
+			<tr><td>duration</td><td><%= event.duration %></td></tr>
+			<tr><td>capacity</td><td><%= event.capacity %></td></tr>
+			<tr><td>organizer</td><td><%= event.user.firstname %></td></tr>
+			<tr><td></td><td><%= link_to "Edit this event", edit_event_path(event),
+											:class => 'btn btn-default btn-xs' %>
+			</td></tr>
+			<tr><td></td><td>
+				<%= link_to "Delete this event", event, method: :delete,
+			                data: { confirm: 'Are you sure?' },
+			                :class => 'btn btn-danger btn-xs'  %>
+			</td></tr>
+		</table>
+	</div>
+<% end %>
