@@ -54,11 +54,6 @@ $(function() {
     		})
     	}
     }
-    // else {
-    // 	alert("YOU PROVIDED Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
-    // }
-    // alert("ABOUT TO SUBMIT: Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
-    // return(true);
   });
 
 });
