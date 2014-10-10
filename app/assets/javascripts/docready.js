@@ -16,7 +16,7 @@ $(function() {
  		//event.preventDefault();
  		var $lat = $("#event_lat");
  		var $lng = $("#event_lng");
-   	if (!$lat.val()) {
+   	if ($my_form.length && !$lat.val()) {
    		var $street_val = $("#event_street").val();
    		var $city_val = $("#event_city").val();
    		var $state_val = $("#event_state").val();
