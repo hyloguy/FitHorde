@@ -10,7 +10,9 @@ $(function() {
 		}
 	});
 
-	$("[id='new_event'], [id^='edit_event']").submit(function( event ) {
+	var $my_form = $("[id='new_event'], [id^='edit_event']");
+
+	$("[name='commit']").on("click", function( event ) {
  		//event.preventDefault();
  		var $lat = $("#event_lat");
  		var $lng = $("#event_lng");
@@ -46,15 +48,17 @@ $(function() {
     			else {
     				$lat.val(data.results[0].geometry.location.lat);
     				$lng.val(data.results[0].geometry.location.lng);
-    				console.log("Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
+    				alert("OBTAINED FROM GOOGLE: Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
+    				$my_form.submit();
     			}
     		})
     	}
     }
-    else {
-    	console.log("YOU PROVIDED Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
-    }
-    alert("Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
+    // else {
+    // 	alert("YOU PROVIDED Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
+    // }
+    // alert("ABOUT TO SUBMIT: Latitude is " + $lat.val() + " and longitude is " + $lng.val() + ".");
+    // return(true);
   });
 
 });
